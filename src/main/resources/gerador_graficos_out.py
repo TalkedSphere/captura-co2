@@ -47,7 +47,7 @@ elif df is not None and tipo_grafico == GRAFICO_GERAL:   # Curvas do Gráfico Ge
   plt.plot(df["Minuto_out"], df["CO2_out_suav_%"], color="red", linewidth=2, label="CO2 de Saída (Suavizado)")
 
 # Informações comuns a todos os gráficos.
-plt.title("Teor de CO2 - Entrada x Saída")
+plt.title("Teor de CO2 - Saída")
 plt.xlabel("Tempo (m)")
 plt.ylabel("CO2 (%)")
 plt.grid(True)
