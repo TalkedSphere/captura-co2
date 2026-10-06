@@ -21,8 +21,8 @@ public class CapturaApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(CapturaApplication.class.getResource("CapturaView.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 714, 374); // Largura e altura da janela, respectivamente.
+        FXMLLoader fxmlLoader = new FXMLLoader(CapturaApplication.class.getResource("CapturaInicialView.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 714, 260); // Largura e altura da janela, respectivamente.
         stage.setTitle("Captura CO2");
         stage.setScene(scene);
         stage.show();

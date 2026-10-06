@@ -9,6 +9,10 @@ package br.ufmg.capturaco2;
 // Imports.
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -18,10 +22,9 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 // Classe pública.
-public class CapturaController {
+public class CapturaInOutController {
     // Constantes
     private static final String GRAFICO_EXPERIMENTAL = "0";
     private static final String GRAFICO_AJUSTADO = "1";
@@ -44,6 +47,8 @@ public class CapturaController {
     private Button botao_grafico_ajustado;
     @FXML
     private Button botao_grafico_geral;
+    @FXML
+    private Button botao_voltar;
 
     // Variável que guarda o arquivo anexado.
     private File arquivo;
@@ -97,7 +102,7 @@ public class CapturaController {
                 return;
             }
             confirmado = true;
-            new Thread(() -> processador()).start();
+            new Thread(() -> processador_in_out()).start();
         });
 
         // Define as ações do botão responsável por gerar o gráfico experimental.
@@ -125,6 +130,18 @@ public class CapturaController {
                 return;
             }
             new Thread(() -> geradorGrafico(GRAFICO_GERAL)).start();
+        });
+
+        // Define as ações do botão reponsável mostrar a janela inicial
+        botao_voltar.setOnAction(event -> {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("CapturaInicialView.fxml"));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                Scene scene = new Scene(root, 714, 260);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException _) {}
         });
     }
 
@@ -177,9 +194,9 @@ public class CapturaController {
     }
 
     /**
-     * Processa os dados do arquivo.
+     * Processa os dados do arquivo separando o IN e o OUT.
      */
-    private void processador() {
+    private void processador_in_out() {
         // Cria o arquivo temporário.
         File arquivoTemporario = null;
         // Janela estável.
@@ -211,7 +228,7 @@ public class CapturaController {
 
         // Executa o arquivo temporário.
         try {
-            arquivoTemporario = criarArquivoTemp("geradorGraficos");
+            arquivoTemporario = criarArquivoTemp("gerador_graficos_in_out");
             if(arquivoTemporario != null) executarArquivoTemp(arquivoTemporario, tipo, null);
         } catch (IOException e) {
             Platform.runLater(()  -> alertaErroSistema(e));
