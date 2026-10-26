@@ -11,10 +11,12 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="714.0" style="-fx-border-color: #005088; -fx-border-width: 5px; -fx-border-radius: 15px; -fx-padding: 20px;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufmg.capturaco2.CapturaInicialController">
    <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="116.8" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.79998779296875" minWidth="10.0" prefWidth="190.39997558593748" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.19998779296878" minWidth="10.0" prefWidth="204.19998779296878" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.79997558593755" minWidth="10.0" prefWidth="115.79997558593755" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="79.3999755859375" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0000244140625" minWidth="10.0" prefWidth="167.19997558593747" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.000048828125" minWidth="10.0" prefWidth="187.2000244140625" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.19998779296878" minWidth="10.0" prefWidth="167.999951171875" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.79997558593755" minWidth="10.0" prefWidth="65.199951171875" />
+      <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints maxHeight="116.79999389648438" minHeight="10.0" prefHeight="56.2" vgrow="SOMETIMES" />
@@ -27,7 +29,7 @@
             <Image url="@logo_ufmg.png" />
          </image>
       </ImageView>
-      <Label fx:id="titulo" text="Captura CO2" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label fx:id="titulo" text="Captura CO2" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
             <Font name="Arial Bold" size="33.0" />
          </font>
@@ -37,14 +39,19 @@
             <Font name="Arial" size="19.0" />
          </font>
       </Label>
-      <Button fx:id="botao_in_out" defaultButton="true" mnemonicParsing="false" prefHeight="75.0" prefWidth="158.0" text="Análise IN OUT&#10;dos dados" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button fx:id="botao_in_out" defaultButton="true" mnemonicParsing="false" prefHeight="75.0" prefWidth="158.0" text="Análise IN OUT" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="botao_out" defaultButton="true" mnemonicParsing="false" prefHeight="75.0" prefWidth="158.0" text="Análise OUT&#10;dos dados" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button fx:id="botao_out" defaultButton="true" mnemonicParsing="false" prefHeight="75.0" prefWidth="158.0" text="Análise OUT" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="botao_in" defaultButton="true" mnemonicParsing="false" prefHeight="75.0" prefWidth="158.0" text="Análise IN" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <font>
+            <Font size="18.0" />
          </font>
       </Button>
    </children>

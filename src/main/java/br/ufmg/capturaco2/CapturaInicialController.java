@@ -24,6 +24,8 @@ public class CapturaInicialController {
     private Button botao_in_out;
     @FXML
     private Button botao_out;
+    @FXML
+    private Button botao_in;
 
     /**
      * Automaticamente executado após o carregamento do view.
@@ -48,7 +50,19 @@ public class CapturaInicialController {
                 Parent root = FXMLLoader.load(getClass().getResource("CapturaOutView.fxml"));
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-                Scene scene = new Scene(root, 714, 374);
+                Scene scene = new Scene(root, 714, 300);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException _) {}
+        });
+
+        // Define as ações do botão reponsável mostrar a janela da análise IN.
+        botao_in.setOnAction(event -> {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("CapturaInView.fxml"));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                Scene scene = new Scene(root, 714, 300);
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException _) {}

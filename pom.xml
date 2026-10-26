@@ -159,7 +159,7 @@
                                 <argument>--type</argument><argument>exe</argument>
                                 <argument>--dest</argument><argument>${project.build.directory}/installer</argument>
                                 <argument>--name</argument><argument>CapturaCO2</argument>
-                                <argument>--app-version</argument><argument>6.0.0</argument>
+                                <argument>--app-version</argument><argument>7.0.0</argument>
                                 <argument>--runtime-image</argument><argument>${project.build.directory}/app</argument>
                                 <argument>--input</argument><argument>${project.build.directory}/libs</argument>
                                 <argument>--main-jar</argument><argument>${project.build.finalName}.jar</argument>

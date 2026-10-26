@@ -41,7 +41,7 @@ class ResultadoProcessamento:
         )
 
 
-class ProcessadorCO2InOut:
+class ProcessadorCO2Out:
 
     # --- Estilos de planilha (constantes de classe) ---
     _COR_CABECALHO = "1F4E78"
@@ -52,7 +52,7 @@ class ProcessadorCO2InOut:
         self,
         caminho: str,
         aba_fonte: Optional[str] = None,
-        aba_saida: str = "CO2_in_out",
+        aba_saida: str = "CO2_out",
         seg_inicio: int = 1,
         seg_fim: int = 60,
         janela_suavizacao: int = 5,
@@ -213,7 +213,6 @@ class ProcessadorCO2InOut:
         self._escrever_tabela_principal(aba, medias)
         self._escrever_series(aba)
         self._ajustar_larguras(aba)
-        self._adicionar_grafico(aba)
         self._escrever_nota_metodologica(aba)
         self._escrever_resumo(aba)
 
@@ -296,23 +295,6 @@ class ProcessadorCO2InOut:
         for coluna, largura in larguras.items():
             aba.column_dimensions[get_column_letter(coluna)].width = largura
 
-    def _adicionar_grafico(self, aba: Worksheet) -> None:
-        """Adiciona o grafico de dispersao comparando in x out."""
-        grafico = ScatterChart()
-        grafico.title = "CO2 out (apos captura)"
-        grafico.x_axis.title = "Tempo (minuto)"
-        grafico.y_axis.title = "Teor de CO2 (%)"
-        grafico.x_axis.delete = False
-        grafico.y_axis.delete = False
-        grafico.height = 11
-        grafico.width = 22
-        grafico.style = 2
-
-        n_out = len(self._serie_out)
-        grafico.series.append(self._criar_serie(aba, 10, 11, n_out, suave=False))
-        grafico.series.append(self._criar_serie(aba, 10, 12, n_out, suave=True))
-        aba.add_chart(grafico, "J2")
-
     @staticmethod
     def _criar_serie(
         aba: Worksheet,
@@ -386,7 +368,7 @@ class ProcessadorCO2InOut:
 # ---------------------------------------------------------------------- #
 if __name__ == "__main__":
     # O usuario define o arquivo de origem dos dados. Esse MESMO arquivo
-    # recebe a aba de resultados (CO2_in_out).
+    # recebe a aba de resultados (CO2_out).
     from pathlib import Path
     import sys
 
@@ -395,6 +377,6 @@ if __name__ == "__main__":
     if not Path(nome_arquivo).is_file():
         raise SystemExit(f"Arquivo nao encontrado: {nome_arquivo}")
 
-    processador = ProcessadorCO2InOut(nome_arquivo)
+    processador = ProcessadorCO2Out(nome_arquivo)
     resultado = processador.processar()
     print(resultado)

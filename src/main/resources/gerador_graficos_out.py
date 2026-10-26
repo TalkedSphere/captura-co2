@@ -16,7 +16,7 @@ nome_arquivo = sys.argv[1]
 tipo_grafico = sys.argv[2]
 
 # Dataframe.
-df = pd.read_excel(nome_arquivo, decimal=',', sheet_name="CO2_in_out")
+df = pd.read_excel(nome_arquivo, decimal=',', sheet_name="CO2_out")
 
 # Lê o resumo.
 linhas_texto = [str(x) for x in df["Minuto"].dropna() if isinstance(x, str)]
